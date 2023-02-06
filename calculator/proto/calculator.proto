@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package calculator;
+
+option go_package = "github.com/achmadAlli/go-grpc/calculator/proto";
+
+message CalculationRequest {
+  int32 a = 1;
+  int32 b = 2;
+}
+
+message CalculationResponse {
+  double result = 1;
+}
+
+service CalculatorService {
+  rpc Sum (CalculationRequest) returns (CalculationResponse);
+  rpc Minus (CalculationRequest) returns (CalculationResponse);
+  rpc Multiply (CalculationRequest) returns (CalculationResponse);
+  rpc Devide (CalculationRequest) returns (CalculationResponse);
+}
