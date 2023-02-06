@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package primes;
+
+option go_package = "github.com/achmadAlli/go-grpc/primeStream/proto";
+
+message PrimeRequest {
+  int32 number = 1;
+}
+
+message PrimeResponse{
+  int32 prime = 1; 
+}
+
+service GeneratePrimeService {
+  rpc GetPrimeNumber (PrimeRequest) returns (stream PrimeResponse);
+}
