@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package statistic;
+
+option go_package = "github.com/achmadAlli/go-grpc/statistic/proto";
+
+message CalculationItem {
+  double number = 1;
+}
+
+message AverageResponse {
+  double number = 1;
+}
+
+service StatisticProcessor{
+  rpc CalculateAverage (stream CalculationItem) returns (AverageResponse);
+}
