@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package leaderboard;
+
+option go_package = "github.com/achmadAlli/go-grpc/leaderboard_stream/proto";
+
+message Player {
+  string name = 1;
+  int32 point = 2;
+  int32 rank = 3;
+}
+
+message StoreNewLeaderboardRequest {
+  Player newPlayer = 1;
+}
+
+message LeaderboardResponse {
+  repeated Player leaderboard = 1;
+}
+
+message EmptyParam {}
+
+
+service LeaderboardService {
+  rpc AddNewPlayer (stream StoreNewLeaderboardRequest) returns (stream LeaderboardResponse);
+  rpc GetLeaderboard (EmptyParam) returns (LeaderboardResponse);
+}
